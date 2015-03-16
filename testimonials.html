@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<title>Meraki Hair</title>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+		<meta property="og:url" content="http://merakinaturalhair.com/"/>
+		<meta property="og:image" content="http://merakinaturalhair.com/logo.png"/>
+		<meta property="og:title" content="Meraki Natural Hair"/>
+		<meta property="og:description" content="Meraki Natural Hair. Here you can make an appointment, if you're in the city, submit a testimonial if you've already had work done, and see a portfolio of what has been done and can be done for you."/>
+		<link rel="shortcut icon" type="image/x-icon" href="logo.ico" />
+		<link href="style.css" rel="stylesheet" type="text/css" media="all"/>
+	</head>
+	<body id="home" data-page="testimonials">
+		<header id="header" class="">
+			<a id="logo-title" href="index">
+					<div id="logo"></div>
+					<span id="title"></span>
+			</a>
+			<div id="nav-slider"></div>
+			<div id="mo-nav"></div>
+			<ul id="nav" class="">
+				<li class="nav-li"><a href="index">HOME</a>
+				</li><li class="nav-li"><a href="booking">BOOKING</a>
+				</li><li class="nav-li"><a href="testimonials">TESTIMONIALS</a>
+				</li><li class="nav-li"><a href="portfolio">PORTFOLIO</a>
+				</li><li class="nav-li"><a href="contact">CONTACT</a></li>
+			</ul>
+		</header>
+		<section class="section-colored">
+			<div class="page-wrap banner">
+				<span class="banner-font">TESTIMONIALS</span>
+				<a class="banner-button float-r-temp" href="contact?testimonial">SUBMIT TESTIMONIAL</a>
+				<div class="clear"></div>
+			</div>
+		</section>
+		<section class="sec-pad-even">
+			<div id="testimonial-spawn" class="page-wrap align-left-temp">
+			</div><!--end testimonial wrapper-->
+		</section>
+		<footer>
+			<div class="page-wrap">
+				&copy; Copyright 205. Meraki Natural hair. Site created by <a href="http://piecedigital.github.io">Piece Digital.</a>
+			</div>
+		</footer>
+		<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+		<script type="text/javascript" src="jquery-ui.min.js"></script>
+		<script type="text/javascript" src="main.js"></script>
+		<script charset="utf-8">
+			var tests = [
+				{
+					"person": "keisha A.",
+					"test": "I love Meraki Hair! Definitely book your next appointment here! I Love Lauren she is really Knowledgeable about natural hair. She really took the time to explain great tips on how to transistion to natural hair as well as natural products to use. I love my hair and while in the chair I was telling others about her and trying to help them decide on a good hair style for them to try."
+				},
+				{
+					"person": "elizabeth W.",
+					"test": "I am not a hair person at all I rock pony tails and buns. I have had numerous people do my hair and it it's okay but not the way I picture it. After talking with Lauren and hearing her home remedies for strengthing my hair and helping with breakage and after she did my hair for me I am hooked Lauren knows what she is doing and she does not only a good job but her work is faboulous. Thanks so much Lauren for your help."
+				},
+				{
+					"person": "kiara S.",
+					"test": "I love Meraki Hair! Definitely book your next appointment here! I absolutely love Lauren! She gives great tips and knows natural hair!! She did my crochet braids! And I'm hooked!! I swear I'll never cheat on her! Lol."
+				},
+				{
+					"person": "rasheika S.",
+					"test": "Lauren has wonderful talent and is passionate about what she does. She did a beautiful job on my hair and I love it! Thank you for your professional service!"
+				},
+				{
+					"person": "Shante S.",
+					"test": "How my looks after the fact! Great"
+				},
+				{
+					"person": "B. L.",
+					"test": "I first found out about her through her blog ' Untouchmyhair'. I use that blog as a guide and she has truly helped my hair regime! I can definetly see improvements in my hair from her, thank you!"
+				},
+				{
+					"person": "angelica J,",
+					"test": "Love the fact that my braids were neat, nice and tight."
+				},
+				{
+					"person": "veronica J.",
+					"test": "Whenever I have a hair question or anything hair related I always go to Lauren first. She knowledgeable and helps me out a lot. Since I've been natural she is my go to chick for my natural hair problems. "
+				},
+				{
+					"person": "stacee G.",
+					"test": "I have natural hair and I have many questions. Mrs Dixon gives the best advice for caring for my hair."
+				},
+				{
+					"person": "syrkina C.",
+					"test": "Lauren is wonderful with natural hair care. She always has the best remedies. Before Lauren my hair was dry and breaking, now I'm seeing growth and my hair stays moisturized."
+				},
+				{
+					"person": "desiree D.",
+					"test": "I love Lauren Dixon! Definitely book your next appointment here! She retwisted my locs using only a light whipped shea butter blend. The retwist held until I washed a couple weeks later. I'm very particular about who touches my hair and she is one of few to retwist my hair in 12 years. I was completely comfortable and recommend Lauren without reservation."
+				},
+				{
+					"person": "jamyla B.",
+					"test": "She has given me good advice on the treatment of my natural hair. As a result my hair has become more moisturizer and substantial growth."
+				},
+				{
+					"person": "danielle B.",
+					"test": "I love my hair!!! Services were very professional, i'll be back and be sure to tell others!!"
+				}
+			];
+			tests.map(function(elem, index){
+				if(index % 2 === 0){
+					$("#testimonial-spawn").append("<div class='clear'>");
+				}
+				$("#testimonial-spawn").append("<p class='testimonial-bubble'>"+elem.test+"<br><span class='sign'> - "+(elem.person.charAt(0).toUpperCase())+(elem.person.slice(1))+"</span></p>");
+				//console.log(elem);
+			});
+			if(tests.length % 2 !== 0){
+				$(".testimonial-bubble:last").css({ "display":"block" ,"margin":"1.5em auto 0", "float": "none"});
+			}
+			$(".testimonial-bubble:nth-of-type(odd)").addClass("float-l-temp");
+			$(".testimonial-bubble:nth-of-type(even)").addClass("float-r-temp");
+			$("footer").before("<div class='clear'></div>")
+		</script>
+	</body>
+</html>

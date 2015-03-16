@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<title>Meraki Hair</title>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+		<meta property="og:url" content="http://merakinaturalhair.com/"/>
+		<meta property="og:image" content="http://merakinaturalhair.com/logo.png"/>
+		<meta property="og:title" content="Meraki Natural Hair"/>
+		<meta property="og:description" content="Meraki Natural Hair. Here you can make an appointment, if you're in the city, submit a testimonial if you've already had work done, and see a portfolio of what has been done and can be done for you."/>
+		<link rel="shortcut icon" type="image/x-icon" href="logo.ico" />
+		<link href="style.css" rel="stylesheet" type="text/css" media="all"/>
+	</head>
+	<body id="home" data-page="contact">
+		<header id="header" class="">
+			<a id="logo-title" href="index">
+					<div id="logo"></div>
+					<span id="title"></span>
+			</a>
+			<div id="nav-slider"></div>
+			<div id="mo-nav"></div>
+			<ul id="nav" class="">
+				<li class="nav-li"><a href="index">HOME</a>
+				</li><li class="nav-li"><a href="booking">BOOKING</a>
+				</li><li class="nav-li"><a href="testimonials">TESTIMONIALS</a>
+				</li><li class="nav-li"><a href="portfolio">PORTFOLIO</a>
+				</li><li class="nav-li"><a href="contact">CONTACT</a></li>
+			</ul>
+		</header>
+		<section class="section-colored">
+			<div class="page-wrap banner">
+				<span class="banner-font">CONTACT ME</span>
+			</div>
+		</section>
+		<section>
+			<form id="contactform" class="page-wrap" action="" method="get">
+				<label for="name">Name: </label>
+				<input type="text" name="name" value="" placeholder="Enter your name..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="off">
+				<label for="email">Email: </label>
+				<input type="email" name="email" value="" placeholder="Enter your email..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="off">
+				<label for="tele">Phone: </label>
+				<input type="tel" name="tel" value="" placeholder="Enter your phone number..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="off">
+				<label>Message Type: </label>
+				<label for="msg">Inquery: </label>
+				<input type="radio" name="rdio" value="message">
+				<label for="testi">Testimonial: </label>
+				<input type="radio" name="rdio" value="testimonial">
+				<label for="message">Name: </label>
+				<textarea name="message" rows="8" placeholder="Enter your message..."></textarea>
+				<span id="textLength"></span>
+				<button name="submit" id="button" class="submit">SEND</button>
+			</form>
+		</section>
+		<footer>
+			<div class="page-wrap">
+				&copy; Copyright 205. Meraki Natural hair. Site created by <a href="http://piecedigital.github.io">Piece Digital.</a>
+			</div>
+		</footer>
+		<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+		<script type="text/javascript" src="jquery-ui.min.js"></script>
+		<script type="text/javascript" src="main.js"></script>
+		<script type="text/javascript" src="portfolio-pop.js"></script>
+		<script charset="utf-8">
+			if(window.location.search === "?testimonial"){
+				$("input[value=testimonial]").attr("checked", "checked")
+			}
+			$("input").addClass("invalid");
+			$("input[name=rdio]").each( function(){
+				if( $(this).attr("checked") === "checked" )
+				$("input[name=rdio]").removeClass("invalid")
+			});
+			$("textarea").addClass("invalid");
+			$(".submit").prop("disabled", true).css({"opacity": ".5"});
+
+			/*validate input*/
+			function validate(name){
+				/*console.log(name);*/
+				if(name === "name"){
+					if( $("input[name=name]").val().length === "" ){
+						$("input[name=name]").addClass("invalid");
+					} else {
+						$("input[name=name]").removeClass("invalid");
+					}
+				} else
+				if(name === "email"){
+					if( !$("input[name=email]").val().match(/([a-z0-9]*)([.][a-z0-9]*)?([@][a-z0-9]*)([.][a-z]*)([.][a-z]{2})?/ig) ){
+						$("input[name=email]").addClass("invalid");
+					} else {
+						$("input[name=email]").removeClass("invalid");
+					}
+				} else {
+					if( !$("input[name=tel]").val().match(/^([1]{1})?([\s])?([\(])?([0-9]{3})([\)])?([\-])?([\s])?([0-9]{3})([\s])?([\-])?([0-9]{4})$/g) ){
+						$("input[name=tel]").addClass("invalid");
+					} else {
+						$("input[name=tel]").removeClass("invalid");
+					}
+				}
+			};
+			$(function(){
+				/*name*/
+				$(document).on("keydown", "input[name=name]", function(){validate( $(this).attr("name") )} );/*end of check empty text box*/
+				$(document).on("keyup", "input[name=name]", function(){validate( $(this).attr("name") )} );/*end of check empty text box*/
+				/*email*/
+				$(document).on("keydown", "input[name=email]", function(){validate( $(this).attr("name") )} );/*end of check empty text box*/
+				$(document).on("keyup", "input[name=email]", function(){validate( $(this).attr("name") )} );/*end of check empty text box*/
+				/*tele*/
+				$(document).on("keydown", "input[name=tel]", function(){validate( $(this).attr("name") )} );/*end of check empty text box*/
+				$(document).on("keyup", "input[name=tel]", function(){validate( $(this).attr("name") )} );/*end of check empty text box*/
+
+			});
+
+			$("input[name=rdio]").on("mousedown", function(){
+				$(this).removeClass("invalid");
+			});/*end of check empty text box*/
+
+			/*check empty text box*/
+			$("textarea").on("keyup", function(){
+				if( $(this).val().length < 20){
+					$("#textLength").html( $(this).val().length + " &#x2716; | &#x2794; 20+" );
+					$("#textLength").css({"color": "red"});
+					$(this).addClass("invalid");
+				} else {
+					$("#textLength").html( $(this).val().length + " &#x2714;" );
+					$("#textLength").css({"color": "green"});
+					$(this).removeClass("invalid");
+				}
+			});/*end of check empty text box*/
+			$(document).on("keyup", function(){
+				if( $("input").hasClass("invalid") !== true && $("textarea").hasClass("invalid") !== true ){
+					$(".submit").prop("disabled", false).css({"opacity": "1"});
+				}
+			});
+		</script>
+	</body>
+</html>
