@@ -357,6 +357,7 @@ section{
 	}
 }
 #spinner:after{
+	display: none;
 	content: "";
 	position: absolute;
 	top: 20%;
@@ -470,6 +471,7 @@ section{
 }
 /*lightbox*/
 #lightbox{
+	background: transparent;
 	z-index: 4;
 	position: fixed;
 	top: 0;

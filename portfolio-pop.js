@@ -66,21 +66,19 @@ $(document).ready(function(){
   function popCats(given){
     $("#portfolio-spawn").css({"opacity": "0"});
     $(".portfolio-wrapper").css({"height": "6em"});
-    $("#spinner").css({"opacity": "1"});
     $("#portfolio-spawn").html("");
 //console.log(typeof given);
     setTimeout(function(){
       given.map(function(elem, index){
         if(given === cats )
-          {$("#portfolio-spawn").append("<div class='cat-wrapper' data-show-cat="+elem.data+"><img class='cat-img' src='"+elem.preview+".jpg' /><span class='cat-title'>"+elem.category+"</span></div>");}
+          {$("#portfolio-spawn").append("<div class='cat-wrapper' data-show-cat="+elem.data+"><img class='cat-img' src='/files/theme/"+elem.preview+".jpg' /><span class='cat-title'>"+elem.category+"</span></div>");}
           else
-            {$("#portfolio-spawn").append("<div class='cat-wrapper lb-img'><img class='cat-img' data-index='"+index+"' src='"+elem.preview+".jpg' /><span class='cat-title'>CLICK TO VIEW</span></div>");}
+            {$("#portfolio-spawn").append("<div class='cat-wrapper lb-img'><img class='cat-img' data-index='"+index+"' src='/files/theme/"+elem.preview+".jpg' /><span class='cat-title'>CLICK TO VIEW</span></div>");}
           });
     }, 600);
     setTimeout(function(){
       $("#portfolio-spawn").css({"opacity": "1"});
       $(".portfolio-wrapper").css({"height": "auto"});
-      $("#spinner").css({"opacity": "0"});
     }, 800)
   }//end popCat
   popCats(cats);
