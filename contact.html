@@ -17,7 +17,7 @@
 		<header id="header" class="">
 			<a id="logo-title" href="index">
 					<div id="logo"></div>
-					<span id="title"></span>
+					<span id="title">MNH</span>
 			</a>
 			<div id="nav-slider"></div>
 			<div id="mo-nav"></div>
@@ -37,18 +37,18 @@
 		<section>
 			<form id="contactform" class="page-wrap" action="" method="get">
 				<label for="name">Name: </label>
-				<input type="text" name="name" value="" placeholder="Enter your name..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="off">
+				<input id="name" type="text" name="name" value="" placeholder="Enter your name..." >
 				<label for="email">Email: </label>
-				<input type="email" name="email" value="" placeholder="Enter your email..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="off">
-				<label for="tele">Phone: </label>
-				<input type="tel" name="tel" value="" placeholder="Enter your phone number..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="off">
+				<input id="email" type="email" name="email" value="" placeholder="Enter your email..." >
+				<label for="tel">Phone: </label>
+				<input id="tel" type="tel" name="tel" value="" placeholder="Enter your phone number..." >
 				<label>Message Type: </label>
 				<label for="msg">Inquery: </label>
-				<input type="radio" name="rdio" value="message">
+				<input type="radio" name="rdio" value="message" checked="checked">
 				<label for="testi">Testimonial: </label>
 				<input type="radio" name="rdio" value="testimonial">
 				<label for="message">Name: </label>
-				<textarea name="message" rows="8" placeholder="Enter your message..."></textarea>
+				<textarea id="textarea" name="message" rows="8" placeholder="Enter your message..."></textarea>
 				<span id="textLength"></span>
 				<button name="submit" id="button" class="submit">SEND</button>
 			</form>
@@ -63,75 +63,38 @@
 		<script type="text/javascript" src="main.js"></script>
 		<script type="text/javascript" src="portfolio-pop.js"></script>
 		<script charset="utf-8">
+			var ctf = $("#contactform");
 			if(window.location.search === "?testimonial"){
 				$("input[value=testimonial]").attr("checked", "checked")
 			}
-			$("input").addClass("invalid");
-			$("input[name=rdio]").each( function(){
-				if( $(this).attr("checked") === "checked" )
-				$("input[name=rdio]").removeClass("invalid")
-			});
-			$("textarea").addClass("invalid");
-			$(".submit").prop("disabled", true).css({"opacity": ".5"});
+	    var update = function() {
+	    	/*gather form data*/
+	    	var formData = $(ctf).serializeArray();
+	    	var Name = formData[0].value, Email = formData[1].value, Tel = formData[2].value, Enquiry = formData[4].value;
+	    	console.log(formData);
+	    	/*usable form data*/
+	    	/*check if valid input*/
+	    	var valName = 0, valEmail = 0, valTel = 0, valEnq = 0;
+	    	if(Name === "" ){ valName = 0; $("#name").removeClass("valid").addClass("invalid");}
+	    		else{ valName = 1; $("#name").addClass("valid").removeClass("invalid"); };
+	    	if(Email === "" || !Email.match(/([a-z0-9]*)([.][a-z0-9]*)?([@][a-z0-9]*)([.][a-z]*)([.][a-z]{2})?/ig) ){ valEmail = 0; $("#email").removeClass("valid").addClass("invalid");}
+	    		else{valEmail = 1; $("#email").removeClass("invalid").addClass("valid");};
+	    	if(Tel === "" || !Tel.match(/^([1]{1})?([\s])?([\(])?([0-9]{3})([\)])?([\-])?([\s])?([0-9]{3})([\s])?([\-])?([0-9]{4})$/g) ){ valTel = 0; $("#tel").removeClass("valid").addClass("invalid");}
+	    		else{valTel = 1; $("#tel").removeClass("invalid").addClass("valid");};
+	    	if(Enquiry === "" || Enquiry.length < 20){ valEnq = 0; $("#textarea").removeClass("valid").addClass("invalid");}
+	    		else{ valEnq = 1; $("#textarea").removeClass("invalid").addClass("valid");};
+	    	$("#textLength").html( Enquiry.length + " &#x2716; | &#x2794; 20+" );
+	    	var noErr = valName + valEmail + valTel + valEnq;
+	    	if(noErr !== 4){
+	    		$(".submit").prop("disabled", true);
+	    		$(".submit").css({"opacity":"0.5"});}
+					else{$(".submit").prop("disabled", false);
+				$(".submit").css({"opacity":"1"});};
+				console.log("valName: "+valName+", valEmail: "+valEmail+", valTel: "+valTel+", valEnq: "+valEnq+", Disabled: "+$("#submit").attr("disabled")+", noErr: "+noErr );
+			}
 
-			/*validate input*/
-			function validate(name){
-				/*console.log(name);*/
-				if(name === "name"){
-					if( $("input[name=name]").val().length === "" ){
-						$("input[name=name]").addClass("invalid");
-					} else {
-						$("input[name=name]").removeClass("invalid");
-					}
-				} else
-				if(name === "email"){
-					if( !$("input[name=email]").val().match(/([a-z0-9]*)([.][a-z0-9]*)?([@][a-z0-9]*)([.][a-z]*)([.][a-z]{2})?/ig) ){
-						$("input[name=email]").addClass("invalid");
-					} else {
-						$("input[name=email]").removeClass("invalid");
-					}
-				} else {
-					if( !$("input[name=tel]").val().match(/^([1]{1})?([\s])?([\(])?([0-9]{3})([\)])?([\-])?([\s])?([0-9]{3})([\s])?([\-])?([0-9]{4})$/g) ){
-						$("input[name=tel]").addClass("invalid");
-					} else {
-						$("input[name=tel]").removeClass("invalid");
-					}
-				}
-			};
-			$(function(){
-				/*name*/
-				$(document).on("keydown", "input[name=name]", function(){validate( $(this).attr("name") )} );/*end of check empty text box*/
-				$(document).on("keyup", "input[name=name]", function(){validate( $(this).attr("name") )} );/*end of check empty text box*/
-				/*email*/
-				$(document).on("keydown", "input[name=email]", function(){validate( $(this).attr("name") )} );/*end of check empty text box*/
-				$(document).on("keyup", "input[name=email]", function(){validate( $(this).attr("name") )} );/*end of check empty text box*/
-				/*tele*/
-				$(document).on("keydown", "input[name=tel]", function(){validate( $(this).attr("name") )} );/*end of check empty text box*/
-				$(document).on("keyup", "input[name=tel]", function(){validate( $(this).attr("name") )} );/*end of check empty text box*/
-
-			});
-
-			$("input[name=rdio]").on("mousedown", function(){
-				$(this).removeClass("invalid");
-			});/*end of check empty text box*/
-
-			/*check empty text box*/
-			$("textarea").on("keyup", function(){
-				if( $(this).val().length < 20){
-					$("#textLength").html( $(this).val().length + " &#x2716; | &#x2794; 20+" );
-					$("#textLength").css({"color": "red"});
-					$(this).addClass("invalid");
-				} else {
-					$("#textLength").html( $(this).val().length + " &#x2714;" );
-					$("#textLength").css({"color": "green"});
-					$(this).removeClass("invalid");
-				}
-			});/*end of check empty text box*/
-			$(document).on("keyup", function(){
-				if( $("input").hasClass("invalid") !== true && $("textarea").hasClass("invalid") !== true ){
-					$(".submit").prop("disabled", false).css({"opacity": "1"});
-				}
-			});
+		  $('form').change(update);
+		  $(document).on("keyup", update);  
 		</script>
 	</body>
 </html>
