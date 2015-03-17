@@ -99,10 +99,10 @@ $(document).ready(function(){
   $(document).on("click", ".lb-img", function(e){
     e.preventDefault();
     $("#lightbox").css({"display":"block", "opacity":"1"});
-    var img = $(this).find(".cat-img").attr("src");
     displaying = $(this).find(".cat-img").data("index");
+    var img = currentPort[displaying].preview;
     console.log(displaying);
-    $("#imageDisplay").html( "<img src='"+img+"' />" );
+    $("#imageDisplay").html( "<img src='/files/theme/"+img+".jpg' />" );
   });
   function prev(){
     displaying--;
@@ -111,7 +111,7 @@ $(document).ready(function(){
     }
     console.log(displaying);
     var img = currentPort[displaying].preview;
-    $("#imageDisplay").html( "<img src='"+img+".jpg' />" );
+    $("#imageDisplay").html( "<img src='/files/theme/"+img+".jpg' />" );
   }
   function next(){
     displaying++;
@@ -120,7 +120,7 @@ $(document).ready(function(){
     }
     console.log(displaying);
     var img = currentPort[displaying].preview;
-    $("#imageDisplay").html( "<img src='"+img+".jpg' />" );
+    $("#imageDisplay").html( "<img src='/files/theme/"+img+".jpg' />" );
   }
   function close(){
     $("#lightbox").css({"opacity":"0"});
@@ -131,6 +131,7 @@ $(document).ready(function(){
   }
 
   $("#prev").on("click", prev);
+  $("#next").on("click", next);
   $("#close").on("click", close);
   $("#background").on("click", close);
   

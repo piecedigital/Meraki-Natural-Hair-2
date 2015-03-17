@@ -154,6 +154,15 @@ section {
   background: #a90000 !important; }
 
 /*-----------------main content styling-----------------*/
+.sec-pad-even {
+  padding: 10em 0; }
+
+.sec-pad-favor-top {
+  padding: 10em 0 0em; }
+
+.sec-pad-favor-bot {
+  padding: 0em 0 10em; }
+
 .social-icon {
   width: 40px;
   -webkit-border-radius: 8px 8px 8px 8px;
@@ -167,6 +176,7 @@ section {
   margin: 6em auto 0;
   font-weight: bold; }
 .connect img {
+  vertical-align: bottom;
   -webkit-transform: translate(0, 0.9em);
   -moz-transform: translate(0, 0.9em);
   -ms-transform: translate(0, 0.9em);
@@ -229,12 +239,6 @@ section {
   margin: 0 .2em; }
 
 /*section padding*/
-.sec-pad-even {
-  padding: 10em 0; }
-
-.sec-pad-favor-top {
-  padding: 10em 0 0em; }
-
 /*testimonial wrapper*/
 #testimonial-wrapper {
   height: auto;
@@ -252,6 +256,7 @@ section {
 .testimonial-bubble {
   text-align: left;
   margin: 1.5em .5em 0;
+  width: 90%;
   max-width: 43%;
   padding: 1em 1em .5em;
   font-weight: 600;
@@ -314,11 +319,11 @@ section {
   text-align: left; }
 
 .banner-font {
-  font-size: 2.8em;
+  font-size: 2.2em;
   font-weight: bold;
   display: inline-block;
   color: #a90000;
-  padding: .5em 1em; }
+  padding: .5em 0em; }
 
 .banner-button {
   color: #a90000;
@@ -429,17 +434,16 @@ section {
 
 #imageDisplay {
   position: absolute;
-  top: 52%;
+  top: 42%;
   left: 50%;
   width: 80%;
-  height: 70%;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  height: 75%;
+  -webkit-transform: translate(-50%, -45%);
+  -moz-transform: translate(-50%, -45%);
+  -ms-transform: translate(-50%, -45%);
+  -webkit-transform: translate(-50%, -45%);
+  transform: translate(-50%, -45%);
   pointer-events: none; }
-
 #imageDisplay img {
   border-radius: 1em;
   max-width: 100%;
@@ -722,7 +726,7 @@ footer {
   /*body content*/
   .portfolio-img {
     max-width: 25%;
-    margin: 0 1em; }
+    margin: 0em; }
 
   .text-type1 {
     max-width: 84%; }
@@ -763,8 +767,19 @@ footer {
     margin: 1.5em;
     display: inline-block; }
 
+  .cat-title {
+    bottom: 0;
+    background: #fc9162; }
+
+  #imageDisplay {
+    height: 60%; }
+
+  #prev, #next {
+    bottom: -1em; }
+
   #close {
-    right: 2em; } }
+    top: 0.2em;
+    right: 0.2em; } }
 /*-----------------squished media quiry-----------------*/
 @media screen and (max-width: 490px) {
   .cat-wrapper {
