@@ -71,9 +71,9 @@ $(document).ready(function(){
     setTimeout(function(){
       given.map(function(elem, index){
         if(given === cats )
-          {$("#portfolio-spawn").append("<div class='cat-wrapper' data-show-cat="+elem.data+"><img class='cat-img' src='/files/theme/"+elem.preview+".jpg' /><span class='cat-title'>"+elem.category+"</span></div>");}
+          {$("#portfolio-spawn").append("<div class='cat-wrapper' data-show-cat="+elem.data+"><img class='cat-img' src='/files/theme/"+elem.preview+"-small.jpg' /><span class='cat-title'>"+elem.category+"</span></div>");}
           else
-            {$("#portfolio-spawn").append("<div class='cat-wrapper lb-img'><img class='cat-img' data-index='"+index+"' src='/files/theme/"+elem.preview+".jpg' /><span class='cat-title'>CLICK TO VIEW</span></div>");}
+            {$("#portfolio-spawn").append("<div class='cat-wrapper lb-img'><img class='cat-img' data-index='"+index+"' src='/files/theme/"+elem.preview+"-small.jpg' /><span class='cat-title'>CLICK TO VIEW</span></div>");}
           });
     }, 600);
     setTimeout(function(){
@@ -115,7 +115,7 @@ $(document).ready(function(){
   }
   function next(){
     displaying++;
-    if(displaying > currentPort.length){
+    if(displaying > currentPort.length-1){
       displaying = 0;
     }
     console.log(displaying);
